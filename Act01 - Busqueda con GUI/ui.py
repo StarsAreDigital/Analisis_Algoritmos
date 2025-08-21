@@ -52,6 +52,7 @@ class App:
         self.ax.set_xlabel("Tamaño del arreglo")
         self.ax.set_yscale("log")
         self.ax.set_ylabel("Tiempo de ejecución (microsegundos)")
+        self.ax.legend(loc="upper left")
         self.scatter.draw()
 
     def linear_search(self):
@@ -82,10 +83,10 @@ class App:
             self.result_text.insert(
                 "1.0",
                 f"Encontrado en la posición {result}\n"
-                + f"Tiempo total: {taken}s\n"
-                + f"Minimo: {min(self.linear_results[size])}s\n"
-                + f"Maximo: {max(self.linear_results[size])}s\n"
-                + f"Media: {sum(self.linear_results[size]) / len(self.linear_results[size])}s\n",
+                + f"Tiempo total: {taken}ms\n"
+                + f"Minimo: {min(self.linear_results[size])}ms\n"
+                + f"Maximo: {max(self.linear_results[size])}ms\n"
+                + f"Media: {sum(self.linear_results[size]) / len(self.linear_results[size])}ms\n",
             )
         self.graph_results()
 
@@ -213,6 +214,16 @@ class App:
         self.scatter = FigureCanvasTkAgg(self.fig, results_frame)
         self.scatter.get_tk_widget().pack(side="right", fill="both", expand=1)
         self.ax = self.fig.add_subplot()
+        
+        self.ax.clear()
+        self.ax.grid(visible=True, which="both", axis="both")
+        self.ax.set_title("Tiempos de búsqueda")
+        self.ax.set_xscale("log")
+        self.ax.set_xlabel("Tamaño del arreglo")
+        self.ax.set_yscale("log")
+        self.ax.set_ylabel("Tiempo de ejecución (microsegundos)")
+        self.scatter.draw()
+
         # endregion
 
         self.root.mainloop()
