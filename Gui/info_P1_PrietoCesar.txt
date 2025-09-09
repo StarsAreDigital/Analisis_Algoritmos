@@ -1,0 +1,16 @@
+lbl.pack(pady=10) Es una instrucción que instancia el elemento lbl en la ventana para mostrarlo.
+El argumento pady=10 indica que debe dejar un espacio de padding de 10 pixeles verticalmente.
+Se utiliza para poner elementos secuencialmente en un panel, con varias opciones de configuración para definir su posición y comportamiento en la ventana.
+
+Se pueden agregar varios tipos de elementos además de labels:
+- listas
+- entradas de texto o número
+- botones
+- barras de desplazamiento
+- menus
+- paneles
+
+Utilizar f antes de una cadena de texto en python permite imprimir variables dentro del texto.
+x = 10
+print(f"x es igual a {x}")
+imprime "x es igual a 10"
