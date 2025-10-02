@@ -8,6 +8,6 @@ def quick_sort(arr):
     
     return quick_sort(left) + middle + quick_sort(right)
 
-array = [7, 86, 1, 15, 65, 2, 21, 30, 1]
+array = [49, 5, 88, 9, 79, 2, 20, 1, 33]
 sorted_arr = quick_sort(array)
 print("Arreglo ordenado:", sorted_arr)
