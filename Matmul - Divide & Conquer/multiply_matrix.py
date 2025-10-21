@@ -8,6 +8,7 @@ from matplotlib import pyplot as plt
 def nextPow2(n: int):
     return int(math.pow(2, math.ceil(math.log2(n))))
 
+
 def resizeMat(mat: np.ndarray, rows: int, cols: int):
     pad_width = ((0, rows - mat.shape[0]), (0, cols - mat.shape[1]))
     return np.pad(mat, pad_width)
@@ -86,6 +87,7 @@ def hybrid_strassen(mat1: np.ndarray, mat2: np.ndarray):
         return multiply_brute_force(mat1, mat2)
     return strassen(mat1, mat2)
 
+
 def multiply_hybrid(mat1: np.ndarray, mat2: np.ndarray):
     n = mat1.shape[0]
     m = mat1.shape[1]
@@ -101,15 +103,14 @@ def multiply_hybrid(mat1: np.ndarray, mat2: np.ndarray):
     return res
 
 
-
-N = 100
-x = list(c * np.pow(10, e) for e in range(3) for c in range(1, 10))
-x = [i for i in x if i <= 500]
-times_strassen = []
-times_brute_force = []
-times_hybrid = []
 if __name__ == "__main__":
+    N = 100
+    x = list(range(1, N + 1))
+    times_strassen = []
+    times_brute_force = []
+    times_hybrid = []
     for i in x:
+        print(i)
         mat1 = np.random.randint(-N, N + 1, (i, i))
         mat2 = np.random.randint(-N, N + 1, (i, i))
 
@@ -122,15 +123,14 @@ if __name__ == "__main__":
         _ = multiply_brute_force(mat1, mat2)
         end = time.perf_counter()
         times_brute_force.append(end - start)
-        
+
         start = time.perf_counter()
         _ = multiply_hybrid(mat1, mat2)
         end = time.perf_counter()
         times_hybrid.append(end - start)
-        
 
-ax = plt.axes()
-# ax.plot(x, times_strassen, "r")
-ax.plot(x, times_brute_force, "g")
-ax.plot(x, times_hybrid, "b")
-plt.show()
+    ax = plt.axes()
+    # ax.plot(x, times_strassen, "r")
+    ax.plot(x, times_brute_force, "g")
+    ax.plot(x, times_hybrid, "b")
+    plt.show()
